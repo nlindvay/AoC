@@ -1,0 +1,14 @@
+-- For creating the virtual environment
+py -3 -m venv .venv
+
+-- For setting permissions in the virtual environment
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+-- For activating the virtual environment
+.venv\scripts\activate
+
+-- For creating a file containing requirements in the virtual environment
+pip freeze > requirements.txt
+
+-- For installing all requirements in the virtual environment
+pip install < requirements.txt
