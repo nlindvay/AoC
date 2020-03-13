@@ -1,0 +1,6 @@
+L to D = 21
+L to X = 44
+L to A = 11
+D to X = 2
+D to A = 55
+A to X = 77

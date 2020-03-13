@@ -22,7 +22,7 @@ badStrings = 0
 
 with(open("2015\day5\day5_input.txt", "r")) as F:
     while(True):
-        line = F.readline().lower()
+        line = F.readline()
         if not line:
             break
         
@@ -56,7 +56,7 @@ with(open("2015\day5\day5_input.txt", "r")) as F:
         else:
             badStrings += 1
 
-print(niceStrings)
+print("part 1 answer: ", niceStrings)
 
 #             --- Part Two ---
 # Realizing the error of his ways, Santa has switched to a better model of determining whether a string is naughty or nice. None of the old rules apply, as they are all clearly ridiculous.
@@ -73,4 +73,39 @@ print(niceStrings)
 # ieodomkazucvgmuy is naughty because it has a repeating letter with one between (odo), but no pair that appears twice.
 # How many strings are nice under these new rules?
 
-    
+import re as regex
+
+niceStrings = 0
+with(open("2015\day5\day5_input.txt", "r")) as F:
+    while(True):
+        line = F.readline()
+        if not line:
+            break
+        
+        prev = None
+        prev2 = None
+        foundPair = False
+        foundSpacedPair = False
+        for curr in range(line.__len__()):
+            if prev is not None:
+                
+                pairs = regex.findall(line[prev] + line[curr], line)
+                if pairs.__len__() >= 2:
+                    foundPair = True
+
+                if prev2 is not None:
+                    if line[prev2] == line[curr]: # compare current and current-2 characters in the line.
+                        spacedPairs = regex.findall(line[prev2]+"[a-z]"+line[curr], line)
+                        if spacedPairs.__len__() > 0:
+                            foundSpacedPair = True
+
+                prev2 = prev
+            prev = curr
+
+
+        if foundPair and foundSpacedPair:
+            niceStrings += 1
+
+print("part 2 answer: ", niceStrings)
+        
+
