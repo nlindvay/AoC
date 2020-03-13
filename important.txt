@@ -11,4 +11,4 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 pip freeze > requirements.txt
 
 -- For installing all requirements in the virtual environment
-pip install < requirements.txt
+pip install > requirements.txt
