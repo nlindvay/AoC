@@ -14,7 +14,6 @@
 
 import re
 starter = "1113122113"
-# example 311311222113
 def morph(string: str) -> str:
 
     strings = []

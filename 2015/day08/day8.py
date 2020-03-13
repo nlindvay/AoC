@@ -28,7 +28,7 @@ import re
 
 originalCount = 0
 newCount = 0
-with(open("2015\day8\day8_input.txt", "r")) as F:
+with(open("2015\day08\input.txt", "r")) as F:
     while True:
         line = F.readline().replace("\n", "")
         if not line:
@@ -70,7 +70,7 @@ print(originalCount - newCount)
 
 originalCount = 0
 newCount = 0
-with(open("2015\day8\day8_input.txt", "r")) as F:
+with(open("2015\day08\input.txt", "r")) as F:
     while True:
         line = F.readline().replace("\n", "")
         if not line:

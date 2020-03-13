@@ -20,7 +20,7 @@ dim = 1000
 grid = [[0] * dim for i in range(dim)]
 lit = 0
 
-with(open("2015\day6\day6_input.txt", "r")) as F:
+with(open("2015\day06\input.txt", "r")) as F:
     while(True):
         line = F.readline().replace("\n","")
         if not line:
@@ -75,7 +75,7 @@ dim = 1000
 grid = [[0] * dim for i in range(dim)]
 brightness = 0
 
-with(open("2015\day6\day6_input.txt", "r")) as F:
+with(open("2015\day06\input.txt", "r")) as F:
     while(True):
         line = F.readline().replace("\n","")
         if not line:

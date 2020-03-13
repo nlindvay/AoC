@@ -24,7 +24,7 @@ import itertools
 
 rules = []
 cities = []
-with(open("2015\day9\day9_input.txt", "r")) as F:
+with(open("2015\day09\input.txt", "r")) as F:
     while True:
         line = F.readline().replace("\n", "")
         if not line:
@@ -41,6 +41,7 @@ with(open("2015\day9\day9_input.txt", "r")) as F:
                     cities.append(string)
     
     shortestDist = None
+    furthestDist = None
     for perm in itertools.permutations(cities):  
 
         dist = 0
@@ -54,8 +55,14 @@ with(open("2015\day9\day9_input.txt", "r")) as F:
             shortestDist = dist
         elif dist < shortestDist: 
             shortestDist = dist
+
+        if furthestDist is None:
+            furthestDist = dist
+        elif dist > furthestDist: 
+            furthestDist = dist
         
-    print(shortestDist)
+    print("part 1 answer: ", shortestDist)
+    print("part 2 answer: ", furthestDist)
 
 #     --- Part Two ---
 # The next year, just to show off, Santa decides to take the route with the longest distance instead.
@@ -68,40 +75,4 @@ with(open("2015\day9\day9_input.txt", "r")) as F:
 
 # Although it hasn't changed, you can still get
    
-rules = []
-cities = []
-with(open("2015\day9\day9_input.txt", "r")) as F:
-    while True:
-        line = F.readline().replace("\n", "")
-        if not line:
-            break
-        split = line.split(" ")
-        split.pop(3)
-        split.pop(1)
-        rules.append(split[0] + " " + split[1] + " " +split[2])
-        rules.append(split[1] + " " + split[0] + " " + split[2])
-
-        for string in split:
-            if re.match("[a-zA-Z]+", string):
-                if not cities.__contains__(string):
-                    cities.append(string)
-    
-    shortestDist = None
-    for perm in itertools.permutations(cities):  
-
-        dist = 0
-        for i in range(len(perm)-1):
-            for rule in rules:
-                split = rule.split(" ")
-                if re.match(perm[i], split[0]) and re.match(perm[i+1], split[1]):
-                    dist += int(split[2])
-                
-        if shortestDist is None:
-            shortestDist = dist
-        elif dist > shortestDist: 
-            shortestDist = dist
-        
-    print(shortestDist)
-
-
 

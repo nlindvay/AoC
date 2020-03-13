@@ -59,27 +59,27 @@ def addWire(var1, var2) -> True:
     return True
 
 #read in the file
-with(open("2015\day7\day7_input.txt", "r")) as F:
+with(open("2015\day07\input.txt", "r")) as F:
     while True:
         line = F.readline().replace("\n", "")
         if not line:
             break
         lines.append(line.split(" "))
 
-while lines.__len__() != 0:
+while len(lines) != 0:
     indices = []
-    for i in range(lines.__len__()):
+    for i in range(len(lines)):
         split = list.copy(lines[i])
         destination = split.pop()
 
         if destination == 'b':
-            wires[destination] = 956
+            wires[destination] = 956 # comment this out for part 1 answer to print
             indices.append(lines[i])
 
         else:
             split.pop()
             addedWire = False
-            if split.__len__() == 3:
+            if len(split) == 3:
                 var1 = split[0]
                 gate = split[1]
                 var2 = split[2]
@@ -99,14 +99,14 @@ while lines.__len__() != 0:
                     if wires.__contains__(var2):
                         addedWire = addWire(int(var1), wires[var2])
                    
-            if split.__len__() == 2:
+            if len(split) == 2:
                 gate = split[0]
                 var1 = split[1]
                 if wires.__contains__(var1):
                     addedWire = True
                     wires[destination] = ~wires[var1]
 
-            if split.__len__() == 1:
+            if len(split) == 1:
                 var1 = split[0]
                 if re.match("[0-9]+", var1):
                     wires[destination] = int(var1)
@@ -118,10 +118,9 @@ while lines.__len__() != 0:
             
             if addedWire == True:
                 indices.append(lines[i])
-                print("added wire from line: ".format(i), lines[i])
             
 
     for ind in indices:
         lines.remove(ind)
 
-print(wires['a'])
+print("part 2 answer: ", wires['a'])

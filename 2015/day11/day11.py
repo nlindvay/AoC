@@ -41,10 +41,10 @@ for i in range(2):
         r2 = False # no 'i', 'o', or 'l'
         r3 = False # 2 diff. non-overlapping pairs 'xx' 'bb'
 
-        if p[idx] == z:
+        if p[idx] == 'z':
             for i in range(len(p)):
                 if idx-i != idx:
-                    if p[idx-i+1] == z:
+                    if p[idx-i+1] == 'z':
                         p[idx-i] = incr(p[idx-i])
                     else:
                         break
@@ -62,7 +62,7 @@ for i in range(2):
             r2 = True
 
         # check r3: 2 diff. non-overlapping pairs 'xx' 'bb'
-        m =  re.findall("(a{2}|b{2}|c{2}|d{2}|e{2}|f{2}|g{2}|h{2}|i{2}|j{2}|k{2}|l{2}|m{2}|n{2}|o{2}|p{2}|q{2}|r{2}|s{2}|t{2}|u{2}|v{2}|w{2}|x{2}|y{2}|z{2})", f)
+        m = re.findall(r"(\w)\1", f)
         if m is not None and len(m) == 2:
             r3 = True
 

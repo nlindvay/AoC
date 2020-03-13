@@ -16,15 +16,25 @@ inpt = "yzbqklnj"
 result = hashlib.md5("abcdef609043".encode())
 
 i = 1
+
+while(True):
+    key = inpt + str(i)
+    result = hashlib.md5(key.encode()).hexdigest()
+    
+    if result.startswith("00000"):
+        break
+
+    i = i + 1
+
+print("part 1 answer: ", i)
+
+i = 1
 while(True):
     key = inpt + str(i)
     result = hashlib.md5(key.encode()).hexdigest()
     
     if result.startswith("000000"):
-        print(result)
         break
-    
-    i = i + 1
 
-print(i)
-    
+    i = i + 1
+print("part 2 answer: ", i)
